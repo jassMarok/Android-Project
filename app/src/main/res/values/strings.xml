@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Project</string>
+    <string name="app_search">Search for a movie</string>
+    <string name="app_radio_movie">Movie</string>
+    <string name="app_radio_tv">TV</string>
+    <string name="app_search_button_text">Search</string>
+</resources>
