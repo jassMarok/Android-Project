@@ -1,11 +1,9 @@
 package ca.mohawkcollege.marok;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 
 import java.io.IOException;
@@ -17,7 +15,7 @@ public class LoadImageAsyncTask extends AsyncTask<Object, Void, Bitmap> {
     public static String TAG = "==DownloadImageTask==";
     public static int HTTP_OK = 200;
 
-    private View _view;
+    private ImageView _imageView;
 
     @Override
     protected Bitmap doInBackground(Object... params) {
@@ -25,7 +23,7 @@ public class LoadImageAsyncTask extends AsyncTask<Object, Void, Bitmap> {
         Bitmap bmp = null;
         Log.d(TAG, "do background loading image" + params[0]);
 
-        _view = (View) params[1];
+        _imageView = (ImageView) params[1];
 
         // URL connection must be done in a try/catch
         int statusCode = -1;
@@ -51,9 +49,10 @@ public class LoadImageAsyncTask extends AsyncTask<Object, Void, Bitmap> {
      */
     protected void onPostExecute(Bitmap result) {
         Log.d(TAG,"onPostExecute()");
-        if (result != null && _view != null) {
-            ImageView albumArt = (ImageView) _view.findViewById(R.id.imageViewPosterThumbnail);
-            albumArt.setImageBitmap(result);
+        if (result != null && _imageView != null) {
+            _imageView.setImageBitmap(result);
+        } else {
+            _imageView.setImageResource(R.drawable.image_not_avail);
         }
     }
 }

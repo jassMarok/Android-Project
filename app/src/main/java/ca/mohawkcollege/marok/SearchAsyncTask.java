@@ -1,6 +1,7 @@
 package ca.mohawkcollege.marok;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ListView;
@@ -51,10 +52,18 @@ public class SearchAsyncTask extends AsyncTask<String, Void, String> {
         Gson gson = new Gson();
         SearchResult searchResult = gson.fromJson(result, SearchResult.class);
 
-        // Set the array adapter
-        ListAdapter listAdapter = new ListAdapter(currentActivity.getApplicationContext(), searchResult.Search);
-        ListView lv = currentActivity.findViewById(R.id.listviewResults);
-        lv.setAdapter(listAdapter);
+        if(searchResult.Response.equals("False")){
+            //Nothing found
+            Log.d(TAG,"Error: search results was empty");
+            Toast.makeText(currentActivity.getApplicationContext(), "No results to show", Toast.LENGTH_LONG)
+                    .show();
+            return;
+        } else {
+            // Set the array adapter
+            ListAdapter listAdapter = new ListAdapter(currentActivity.getApplicationContext(), searchResult.Search);
+            ListView lv = currentActivity.findViewById(R.id.listviewResults);
+            lv.setAdapter(listAdapter);
+        }
     }
 
 }

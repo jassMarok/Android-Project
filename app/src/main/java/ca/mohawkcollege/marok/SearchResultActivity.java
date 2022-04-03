@@ -6,7 +6,7 @@ import android.util.Log;
 
 public class SearchResultActivity extends AppCompatActivity {
 
-    private static String TAG = "==MainActivity==";
+    private static String TAG = "==SearchResultActivity==";
     private static SearchResultActivity _activity;
 
     public static SearchResultActivity getActivity() {

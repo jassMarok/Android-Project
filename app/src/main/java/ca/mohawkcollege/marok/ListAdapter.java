@@ -1,11 +1,15 @@
 package ca.mohawkcollege.marok;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,7 +39,19 @@ public class ListAdapter extends ArrayAdapter<SearchItem> {
         title.setText(item.Title);
         year.setText(item.Year);
 
-        new LoadImageAsyncTask().execute(item.Poster, convertView);
+        new LoadImageAsyncTask().execute(item.Poster, convertView.findViewById(R.id.imageViewPosterThumbnail));
+
+        Button btn = convertView.findViewById(R.id.buttonDetails);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(_context, DetailsActivity.class);
+                intent.putExtra(DetailsActivity.IMDB_ID_KEY, item.imdbID);
+                intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+                _context.startActivity(intent);
+            }
+        });
+
 
         return convertView;
     }
