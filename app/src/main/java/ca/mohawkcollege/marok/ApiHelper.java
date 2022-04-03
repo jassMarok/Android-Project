@@ -16,7 +16,7 @@ public class ApiHelper {
 
     public static final String API_KEY = "7709ed90";
 
-    public static String jsonGet(String link) {
+    public static String jsonGet(String link) throws Exception {
         StringBuilder results = new StringBuilder();
         try {
             URL url = new URL(link);
@@ -40,9 +40,11 @@ public class ApiHelper {
 
         } catch (MalformedURLException ex) {
             Log.d(TAG, "Malformed URL Exception: " + ex);
+            throw new Exception("URL not valid");
         } catch (IOException e) {
             e.printStackTrace();
             Log.d(TAG, "Caught IO Exception: " + e);
+            throw new Exception("Request error");
         }
 
         return results.toString();

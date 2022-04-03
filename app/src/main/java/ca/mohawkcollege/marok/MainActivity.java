@@ -2,6 +2,7 @@ package ca.mohawkcollege.marok;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,9 +14,13 @@ public class MainActivity extends AppCompatActivity {
 
     private static String TAG = "==MainActivity==";
 
-    private MainActivity _mainActivity;
+    private static MainActivity _mainActivity;
     private EditText _editText;
     private RadioGroup _radioGroupSearchType;
+
+    public static String Intent_Search_Term = "SearchTerm";
+    public static String Intent_Search_Type = "SearchType";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         _mainActivity = this;
         _editText = findViewById(R.id.editTextSearchTerm);
         _radioGroupSearchType = findViewById(R.id.radioGroupSearchType);
+    }
+
+    public static MainActivity getMainActivity() {
+        return _mainActivity;
     }
 
     public void onSearchClick(View view) {
@@ -51,10 +60,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        // Request Data
+        // Start Activity
         Log.d(TAG, "searchTerm: " + searchTerm);
         Log.d(TAG, "searchType: " + searchType);
-        Log.d(TAG, "dispatching request for data");
-        new SearchAsyncTask().execute(searchTerm, searchType);
+
+        Intent intent = new Intent(this, SearchResultActivity.class);
+        intent.putExtra(Intent_Search_Term, searchTerm);
+        intent.putExtra(Intent_Search_Type, searchType);
+        startActivity(intent);
     }
 }

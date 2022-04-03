@@ -4,4 +4,8 @@
     <string name="app_radio_movie">Movie</string>
     <string name="app_radio_tv">TV</string>
     <string name="app_search_button_text">Search</string>
+    <string name="listview_title_placeholder">Title</string>
+    <string name="list_view_year_placeholder">2018 - 2029</string>
+    <string name="list_view_year_text">Year:</string>
+    <string name="details_button_text">Details</string>
 </resources>

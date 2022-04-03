@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/devja/AndroidStudioProjects/Project/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/devja/AndroidStudioProjects/Project/app/src/main/res/layout/activity_search_result.xml" value="0.33" />
+        <entry key="..\:/Users/devja/AndroidStudioProjects/Project/app/src/main/res/layout/search_result_list_item.xml" value="0.33605072463768115" />
       </map>
     </option>
   </component>
