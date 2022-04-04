@@ -1,3 +1,9 @@
+/**
+ * I, Jaspal Marok, 000381777 certify that this material is my original work. No
+ * other person's work has been used without due acknowledgement.
+ * https://youtu.be/RX1hXpbAVxI
+ */
+
 package ca.mohawkcollege.marok;
 
 import androidx.appcompat.app.AppCompatActivity;

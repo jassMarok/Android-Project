@@ -50,8 +50,10 @@ public class LoadImageAsyncTask extends AsyncTask<Object, Void, Bitmap> {
     protected void onPostExecute(Bitmap result) {
         Log.d(TAG,"onPostExecute()");
         if (result != null && _imageView != null) {
+            Log.d(TAG, "Image found");
             _imageView.setImageBitmap(result);
         } else {
+            Log.d(TAG, "Image not found, using default image");
             _imageView.setImageResource(R.drawable.image_not_avail);
         }
     }

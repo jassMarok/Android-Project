@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
 import java.net.URL;
@@ -55,11 +56,13 @@ public class SearchAsyncTask extends AsyncTask<String, Void, String> {
         if(searchResult.Response.equals("False")){
             //Nothing found
             Log.d(TAG,"Error: search results was empty");
-            Toast.makeText(currentActivity.getApplicationContext(), "No results to show", Toast.LENGTH_LONG)
+            Snackbar.make(currentActivity.findViewById(R.id.listviewResults),"Error: search results was empty",
+                    Snackbar.LENGTH_LONG)
                     .show();
             return;
         } else {
             // Set the array adapter
+            Log.d(TAG,"setup adapter");
             ListAdapter listAdapter = new ListAdapter(currentActivity.getApplicationContext(), searchResult.Search);
             ListView lv = currentActivity.findViewById(R.id.listviewResults);
             lv.setAdapter(listAdapter);

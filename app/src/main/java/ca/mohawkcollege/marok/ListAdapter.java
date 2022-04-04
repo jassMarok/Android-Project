@@ -45,6 +45,7 @@ public class ListAdapter extends ArrayAdapter<SearchItem> {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "details button clicked: " + position);
                 Intent intent = new Intent(_context, DetailsActivity.class);
                 intent.putExtra(DetailsActivity.IMDB_ID_KEY, item.imdbID);
                 intent.addFlags(FLAG_ACTIVITY_NEW_TASK);

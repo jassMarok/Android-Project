@@ -25,9 +25,12 @@ public class SearchResultActivity extends AppCompatActivity {
         if (extras != null) {
             String searchTerm = extras.getString(MainActivity.Intent_Search_Term);
             String searchType = extras.getString(MainActivity.Intent_Search_Type);
-            //The key argument here must match that used in the other activity
+
             Log.d(TAG, "dispatching request for data");
+
             new SearchAsyncTask().execute(searchTerm, searchType);
+        } else {
+            Log.d(TAG, "no intent data");
         }
     }
 }
